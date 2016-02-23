@@ -1,0 +1,65 @@
+
+$margin-left: 350px;
+$margin-right: 50px;
+
+@mixin beforeFade {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  -webkit-transition: width 3s; /* Safari */
+    transition: width 3s;
+  transition-timing-function: ease-out;
+}
+
+@mixin afterFade {
+  width: 800px;
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, white , gray); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, white, gray); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, white, gray); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, white , gray); /* Standard syntax */
+}
+
+*,
+*::before,
+*::after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  background-image: url('../img/ny.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body {
+  min-height: 100%;
+
+}
+
+header, .summary {
+  background: #0D2C40;
+  color: white;
+}
+
+.sidebar {
+  border: solid black 1px;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+}
+
+.intro, .main {
+  margin-left: $margin-left;
+  margin-right: $margin-right;
+}
+
+.preamble, .main, .participation, .benefits, .requirements {
+  @include beforeFade;
+  &:hover{
+    @include afterFade;
+  }
+}
